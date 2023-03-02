@@ -1,0 +1,10 @@
+.content {
+   grid-area: c;
+   background-color: rgb(243, 176, 176);
+   border-radius: 20px;
+}
+
+.image {
+   width: 100%;
+   border-radius: 20px 20px 0 0;
+}

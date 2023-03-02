@@ -1,15 +1,19 @@
 import React from 'react';
 import './App.css';
-import Header from './Header';
-import Techologies from './Techologies';
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Profile from './components/Profile/Profile';
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Techologies />
-    </div>
-  );
+
+
+const App = (): JSX.Element => {
+   return (
+      <div className='add-wrapper'>
+         <Header/>
+         <Navbar />
+         <Profile />
+      </div>
+   );
 }
 
 export default App;
