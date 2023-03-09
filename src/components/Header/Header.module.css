@@ -6,4 +6,7 @@
 
 .header img {
    width: 80px;
+   border-radius: 0 0 20px 0;
+   border-right: 5px solid rgb(73, 121, 105);
+   border-bottom: 2px solid rgb(73, 121, 105);
 } 

@@ -9,17 +9,21 @@ type MyPostsProps = {
 
 const MyPosts = (props: MyPostsProps): JSX.Element => {
    return (
-         <div className={s.posts}>
-            My posts
-            <div className={s.new}>
+      <div className={s.postsBlock}>
+         <h3>My posts</h3>
+         <div className={s.new}>
+            <div>
                <textarea></textarea>
-               <button>Add post</button>
             </div>
             <div>
-               <Post message='Hi! How are you?' likesCount={15}/>
-               <Post message='It`s my first post' likesCount={20}/>
+               <button>Add post</button>
             </div>
          </div>
+         <div className={s.posts}>
+            <Post message='Hi! How are you?' likesCount={15} />
+            <Post message='It`s my first post' likesCount={20} />
+         </div>
+      </div>
    )
 }
 

@@ -1,22 +1,19 @@
 import React from 'react'
 import MyPosts from './MyPosts/MyPosts'
 import s from './Profile.module.css'
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 
 
-type ProfileProps = {
+type ProfileTypeProps = {
 
 }
 
-const Profile = (props: ProfileProps): JSX.Element => {
+
+const Profile = (props: ProfileTypeProps): JSX.Element => {
    return (
-      <div className={s.content}>
-         <div >
-            <img className={s.image} src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Sea_panorama_-_panoramio.jpg" alt="sea" />
-         </div>
-         <div>
-            avatar+description
-         </div>
+      <div className='main-block'>
+         <ProfileInfo />
          <MyPosts />
       </div>
    )

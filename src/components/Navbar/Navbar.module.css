@@ -2,15 +2,45 @@
    grid-area: n;
    background-color: rgb(170, 241, 230);
    border-radius: 20px;
+   width: 100%
 }
 
 .item {
+   margin-right: 20px;
    padding: 0 0 0 30px;
    font-size: 30px;
    font-weight: 500;
    color: rgb(72, 138, 116);
 }
 
+.item a {
+   color: rgb(72, 138, 116);
+   text-decoration: none;
+}
+
+.item a.activeLink, 
+.item a.activeLink:hover {
+   display: inline-block;
+   width: 103%;
+   color: rgb(77, 69, 148);
+   border-radius: 0 7px 20px 0;
+   border-right: 7px solid rgb(77, 69, 148);
+   border-bottom: 2px solid rgb(77, 69, 148);
+   /* border-top: 2px solid rgb(73, 121, 105);
+   border-left: 2px solid rgb(141, 190, 174); */
+   padding-left: 10px;
+}
+
+
+.item a:hover {
+   color: rgb(96, 152, 204);
+}
+
 .item:first-child {
    padding-top: 20px;
 }
+
+.item:last-child {
+   padding-bottom: 20px;
+}
+
