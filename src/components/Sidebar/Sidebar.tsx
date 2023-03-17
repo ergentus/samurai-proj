@@ -1,12 +1,12 @@
 import React from 'react'
-import s from './Navbar.module.css'
+import s from './Sidebar.module.css'
 import { NavLink } from 'react-router-dom';
 
-type NavbarProps = {
+type SidebarProps = {
 
 }
 
-const Navbar = (props: NavbarProps): JSX.Element => {
+const Sidebar = (props: SidebarProps): JSX.Element => {
    return (
       <nav className={s.nav}>
          <div className={s.item}><NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink></div>
@@ -18,4 +18,4 @@ const Navbar = (props: NavbarProps): JSX.Element => {
    )
 }
 
-export default Navbar
+export default Sidebar

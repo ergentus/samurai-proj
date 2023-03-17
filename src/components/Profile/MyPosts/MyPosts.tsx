@@ -1,13 +1,16 @@
 import React from 'react'
+import {DataPostType} from '../../../redux/state'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
-
 type MyPostsProps = {
-
+   posts: DataPostType[]
 }
 
 const MyPosts = (props: MyPostsProps): JSX.Element => {
+
+   const postsElements = props.posts.map((p) => <Post key={p.id} message={p.message} likesCount={p.likesCount} />)
+   
    return (
       <div className={s.postsBlock}>
          <h3>My posts</h3>
@@ -20,8 +23,7 @@ const MyPosts = (props: MyPostsProps): JSX.Element => {
             </div>
          </div>
          <div className={s.posts}>
-            <Post message='Hi! How are you?' likesCount={15} />
-            <Post message='It`s my first post' likesCount={20} />
+            {postsElements}
          </div>
       </div>
    )
