@@ -1,11 +1,11 @@
 import React from 'react'
-import {profilePageType } from '../../redux/state'
+import {ProfilePageType } from '../../redux/state'
 import MyPosts from './MyPosts/MyPosts'
 import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 type ProfileTypeProps = {
-   profilePage: profilePageType
+   profilePage: ProfilePageType
 }
 
 const Profile = (props: ProfileTypeProps): JSX.Element => {

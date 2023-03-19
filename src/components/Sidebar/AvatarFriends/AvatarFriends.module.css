@@ -1,0 +1,12 @@
+.avatarFriends {
+   
+   
+}
+
+.avatarFriends img{
+   width: 50px;
+   border-radius: 50%;
+   border: 2px solid rgb(156, 80, 80);
+   margin-right: 10px;
+   margin: 0 5px;
+}

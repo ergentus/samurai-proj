@@ -2,7 +2,8 @@
    grid-area: n;
    background-color: rgb(170, 241, 230);
    border-radius: 20px;
-   width: 100%
+   max-width: 100%;
+   min-height: 600px;
 }
 
 .item {
@@ -29,6 +30,7 @@
    /* border-top: 2px solid rgb(73, 121, 105);
    border-left: 2px solid rgb(141, 190, 174); */
    padding-left: 10px;
+   margin-bottom: -2px;
 }
 
 
@@ -41,6 +43,38 @@
 }
 
 .item:last-child {
-   padding-bottom: 20px;
+   border: none;
 }
 
+.nav_friendsBlock {
+   margin-top: 100px;
+}
+
+.itemFriend {
+   text-align: center;
+   font-size: 30px;
+   font-weight: 500;
+   color: rgb(72, 138, 116);
+}
+
+.itemFriend a {
+   color: rgb(72, 138, 116);
+   text-decoration: none;
+}
+
+.itemFriend a.activeLink, 
+.itemFriend a.activeLink:hover {
+   color: rgb(77, 69, 148);
+}
+
+.itemFriend a:hover {
+   color: rgb(96, 152, 204);
+}
+
+
+.avatarBlock {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   margin: 10px;
+}
