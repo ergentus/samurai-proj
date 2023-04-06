@@ -1,3 +1,7 @@
+import profileReducer, {addPostActionCreator, UpdatePostTextAreaActionCreator} from './profile-reducer';
+import dialogsReducer, {addMessageActionCreator, updateMessageTextAreaActionCreator} from './dialogs-reducer';
+import sidebarReducer from './sidebar-reducer';
+
 type DataDialogsType = {
 	id: number
 	name: string
@@ -26,7 +30,7 @@ export type DialogsPageType = {
 	newMessageText: string,
 }
 
-type SidebarPageType = {
+export type SidebarPageType = {
 	sidebar: any //! dont forget
 }
 
@@ -86,45 +90,13 @@ const store: StoreType = {
 		this._callSubscriber = callback
 	},
 	dispatch(action) {
-		if (action.type === 'ADD-POST') {
-			this._state.profilePage.posts.push({id: 5, message: this._state.profilePage.newPostText, likesCount: 0,})
-			this._state.profilePage.newPostText = ''
-			this._callSubscriber(this._state)
-		}
-		if (action.type === 'UPDATE-POST-TEXT-AREA') {
-			this._state.profilePage.newPostText = action.postMessage
-			this._callSubscriber(this._state)
-		}
-		if (action.type === 'ADD-MESSAGE') {
-
-			this._state.dialogsPage.messages.push({id: 2, message: this._state.dialogsPage.newMessageText,})
-			this._state.dialogsPage.newMessageText = ''
-			this._callSubscriber(this._state)
-		}
-		if (action.type === 'UPDATE-MESSAGE-TEXT-AREA') {
-			this._state.dialogsPage.newMessageText = action.dialogMessage
-			this._callSubscriber(this._state)
-		}
+		this._state.profilePage = profileReducer(this._state.profilePage, action)
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+		this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+		this._callSubscriber(this._state)
 	},
 }
 
-export const addPostActionCreator = () => ({type: 'ADD-POST'} as const)
-
-export const UpdatePostTextAreaActionCreator = (newtext: string) => {
-	return {
-		type: 'UPDATE-POST-TEXT-AREA',
-		postMessage: newtext,
-	} as const
-}
-
-export const addMessageActionCreator = () => ({type: 'ADD-MESSAGE'} as const)
-
-export const updateMessageTextAreaActionCreator = (newtext: string) => {
-	return {
-		type: 'UPDATE-MESSAGE-TEXT-AREA',
-		dialogMessage: newtext,
-	} as const
-}
 
 export default store
 // window.store = store
