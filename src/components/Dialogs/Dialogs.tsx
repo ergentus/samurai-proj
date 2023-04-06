@@ -2,28 +2,28 @@ import React, {createRef} from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import {DialogsPageType,} from '../../redux/state';
+import {ActionTypes, addMessageActionCreator, DialogsPageType, updateMessageTextAreaActionCreator} from '../../redux/state';
 
 
 type DialogsTypeProps = {
 	dialogsPage: DialogsPageType
-	addMessage: () => void
-	updateMessageTextArea: (dialogMessage: string) => void
+	dispatch: (action: ActionTypes) => void
 }
 
 const Dialogs = (props: DialogsTypeProps) => {
 
-	const dialogsElements = props.dialogsPage.dialogs.map((d) => <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
-	const messageElements = props.dialogsPage.messages.map((m) => <Message key={m.id} message={m.message}/>)
+	const dialogsElements = props.dialogsPage.dialogs.map((d) => <DialogItem name={d.name} id={d.id} avatar={d.avatar}/>)
+	const messageElements = props.dialogsPage.messages.map((m) => <Message message={m.message}/>)
 
 	let areaField = createRef<HTMLTextAreaElement>()
 
 	const addMessageHandler = () => {
-		props.addMessage()
+		props.dispatch(addMessageActionCreator())
 	}
 
 	const onChangeMessageTextAreaHandler = () => {
-		props.updateMessageTextArea(areaField.current!.value)
+		const text = areaField.current!.value
+		props.dispatch(updateMessageTextAreaActionCreator(text))
 	}
 
 	return (

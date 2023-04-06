@@ -9,14 +9,11 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import MyFriends from './components/MyFriends/MyFriends';
-import {RootPagesType} from "./redux/state";
+import {ActionTypes, RootPagesType} from './redux/state';
 
 type AppPropstype = {
    state: RootPagesType
-   addPost: () => void
-   updateTextArea: (postMessage: string) => void
-   addMessage: () => void
-   updateMessageTextArea: (dialogMessage: string) => void
+   dispatch: (action: ActionTypes) => void
 }
 
 const App = (props:AppPropstype) => {
@@ -27,14 +24,12 @@ const App = (props:AppPropstype) => {
          <div className='app-wrapper-content'>
             <Route path='/profile'>
                <Profile profilePage={props.state.profilePage}
-                        addPost={props.addPost}
-                        updateTextArea={props.updateTextArea}
+                        dispatch={props.dispatch}
                />
             </Route>
             <Route path='/dialogs'>
                <Dialogs dialogsPage={props.state.dialogsPage}
-								addMessage={props.addMessage}
-                        updateMessageTextArea={props.updateMessageTextArea}
+                        dispatch={props.dispatch}
                />
             </Route>
             <Route path='/news' component={News}/>

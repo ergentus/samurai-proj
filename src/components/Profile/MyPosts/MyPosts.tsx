@@ -1,5 +1,5 @@
 import React, {createRef} from 'react'
-import {DataPostType} from '../../../redux/state'
+import {ActionTypes, addPostActionCreator, DataPostType, UpdatePostTextAreaActionCreator} from '../../../redux/state'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
@@ -7,21 +7,23 @@ import Post from './Post/Post'
 type MyPostsProps = {
 	posts: DataPostType[]
 	newTextValue: string
-	addPost: () => void
-	updateTextArea: (postMessage: string) => void
+	dispatch: (action: ActionTypes) => void
 }
 
+
+
 const MyPosts = (props: MyPostsProps): JSX.Element => {
-	const postsElements = props.posts.map((p) => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
+	const postsElements = props.posts.map((p) => <Post message={p.message} likesCount={p.likesCount}/>)
 
 	let newPostElement = createRef<HTMLTextAreaElement>()
 
 	const addPostHandler = () => {
-		props.addPost()
+		props.dispatch(addPostActionCreator())
 	}
 
 	const onChangeTextAreaHandler = () => {
-		props.updateTextArea(newPostElement.current!.value)
+		const text = newPostElement.current!.value
+		props.dispatch(UpdatePostTextAreaActionCreator(text))
 	}
 
 	return (

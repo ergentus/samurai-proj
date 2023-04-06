@@ -49,7 +49,6 @@
 
 .messageItems {
 	padding: 20px;
-
 }
 
 .sendMessageBlock {
@@ -86,4 +85,7 @@
 
 .message {
 	font-size: 26px;
+	word-wrap: break-word;
+	width: 850px;
+	margin-bottom: 30px;
 }
