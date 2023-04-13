@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './Sidebar.module.css'
 import { NavLink } from 'react-router-dom';
-import { DialogsPageType } from '../../redux/state';
+import { DialogsPageType } from '../../redux/store';
 import AvatarFriends from './AvatarFriends/AvatarFriends';
 
 type SidebarPropsType = {

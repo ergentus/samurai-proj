@@ -9,7 +9,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import MyFriends from './components/MyFriends/MyFriends';
-import {ActionTypes, RootPagesType} from './redux/state';
+import {ActionTypes, RootPagesType} from './redux/store';
 
 type AppPropstype = {
    state: RootPagesType

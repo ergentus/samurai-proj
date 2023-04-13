@@ -30,14 +30,10 @@ export type DialogsPageType = {
 	newMessageText: string,
 }
 
-export type SidebarPageType = {
-	sidebar: any //! dont forget
-}
-
 export type RootPagesType = {
 	profilePage: ProfilePageType
 	dialogsPage: DialogsPageType
-	sidebar: SidebarPageType
+	// sidebarBlock: any
 }
 
 export type StoreType = {
@@ -75,9 +71,7 @@ const store: StoreType = {
 			],
 			newMessageText: 'some text',
 		},
-		sidebar: { //! dont forget
-			sidebar: 'any', //! dont forget
-		},
+		// sidebarBlock: {}
 	},
 	_callSubscriber(_state: RootPagesType) {
 		console.log('state was changed')
@@ -92,7 +86,7 @@ const store: StoreType = {
 	dispatch(action) {
 		this._state.profilePage = profileReducer(this._state.profilePage, action)
 		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-		this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+		// this._state.sidebarBlock = sidebarReducer(this._state.sidebarBlock, action)
 		this._callSubscriber(this._state)
 	},
 }
