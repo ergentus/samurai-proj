@@ -1,15 +1,14 @@
 import React, {createRef} from 'react'
 import s from './Dialogs.module.css'
-import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
-import {ActionTypes, DialogsPageType} from '../../redux/store';
-import {addMessageActionCreator, updateMessageTextAreaActionCreator} from '../../redux/dialogs-reducer';
-
+import DialogItem from './DialogItem/DialogItem'
+import Message from './Message/Message'
+import {DialogsPageType} from '../../redux/store'
 
 
 type DialogsTypeProps = {
 	dialogsPage: DialogsPageType
-	dispatch: (action: ActionTypes) => void
+	updateMessageTextArea: (text: string) => void
+	addMessage: () => void
 }
 
 const Dialogs = (props: DialogsTypeProps) => {
@@ -20,12 +19,12 @@ const Dialogs = (props: DialogsTypeProps) => {
 	let areaField = createRef<HTMLTextAreaElement>()
 
 	const addMessageHandler = () => {
-		props.dispatch(addMessageActionCreator())
+		props.addMessage()
 	}
 
 	const onChangeMessageTextAreaHandler = () => {
 		const text = areaField.current!.value
-		props.dispatch(updateMessageTextAreaActionCreator(text))
+		props.updateMessageTextArea(text)
 	}
 
 	return (
