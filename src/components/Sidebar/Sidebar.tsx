@@ -1,18 +1,16 @@
 import React from 'react'
 import s from './Sidebar.module.css'
 import {NavLink} from 'react-router-dom'
-import {StoreType} from '../../redux/store'
+import {DataDialogsType} from '../../redux/store'
 import AvatarFriends from './AvatarFriends/AvatarFriends'
 
 type SidebarPropsType = {
-   store: StoreType
+   dialogs: DataDialogsType[]
 }
 
 const Sidebar = (props: SidebarPropsType) => {
-
-   const state = props.store.getState()
-
-   const avatarFriend = state.dialogsPage.dialogs.map((e) => <AvatarFriends key={e.id} id={e.id} name={e.name} avatar={e.avatar} />)
+   //    const state = props.store.getState()
+   const avatarFriend = props.dialogs.map((e) => <AvatarFriends key={e.id} id={e.id} name={e.name} avatar={e.avatar} />)
 
    return (
       <nav className={s.nav}>

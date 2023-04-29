@@ -1,7 +1,7 @@
 import {addPostActionCreator, UpdatePostTextAreaActionCreator} from './profile-reducer'
 import {addMessageActionCreator, updateMessageTextAreaActionCreator} from './dialogs-reducer'
 
-type DataDialogsType = {
+export  type DataDialogsType = {
 	id: number
 	name: string
 	avatar: string

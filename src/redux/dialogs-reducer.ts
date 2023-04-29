@@ -10,21 +10,23 @@ const initialState = {
 	],
 	messages: [
 		{id: 1, message: 'Hi'},
+		{id: 2, message: 'Hasdai'},
 	],
 	newMessageText: 'some text',
 }
 
-const dialogsReducer = (dialogsPage: DialogsPageType = initialState, action: ActionTypes) => {
+const dialogsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
 	switch (action.type) {
 		case 'ADD-MESSAGE':
-			dialogsPage.messages.push({id: 2, message: dialogsPage.newMessageText,})
-			dialogsPage.newMessageText = ''
-			return dialogsPage
+			// state.messages.push({id: 2, message: state.newMessageText,})
+			// state.newMessageText = ''
+			const newMessage = {id: 3 , message: state.newMessageText}
+			return {...state, messages: [...state.messages, newMessage]}
 		case 'UPDATE-MESSAGE-TEXT-AREA':
-			dialogsPage.newMessageText = action.dialogMessage
-			return dialogsPage
+			// state.newMessageText = action.dialogMessage
+			return {...state, newMessageText: action.dialogMessage}
 		default:
-			return dialogsPage
+			return state
 	}
 }
 
