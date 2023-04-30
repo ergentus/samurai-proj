@@ -1,23 +1,30 @@
-import {ActionTypes, ProfilePageType} from './store';
+import {ActionTypes} from './redux-store'
 
-const initialState = {
+type DataPostType = {
+	id: number
+	message: string
+	likesCount: number
+}
+
+export type ProfilePageType = {
+	posts: DataPostType[]
+	newPostText: string
+}
+
+const initialState: ProfilePageType = {
 	posts: [
 		{id: 1, message: 'Hi! How are you?', likesCount: 15},
 	],
 	newPostText: 'some text',
 }
 
-const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
+const profileReducer = (state = initialState, action: ActionTypes) => {
 	switch (action.type) {
 		case 'ADD-POST':
-			// state.posts.push({id: 5, message: state.newPostText, likesCount: 0})
-			// state.newPostText = ''
 			const newPost = {id: 2, message: state.newPostText, likesCount: 15}
 			return {...state, posts: [...state.posts, newPost]}
 
 		case 'UPDATE-POST-TEXT-AREA':
-			// state.newPostText = action.postMessage
-
 			return {...state, newPostText: action.postMessage}
 
 		default:

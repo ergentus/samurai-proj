@@ -2,16 +2,10 @@ import React, {createRef} from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
-import {DialogsPageType} from '../../redux/store'
+import {DialogPropsType} from './DialogsContainer'
 
 
-type DialogsTypeProps = {
-	dialogsPage: DialogsPageType
-	updateMessageTextArea: (text: string) => void
-	addMessage: () => void
-}
-
-const Dialogs = (props: DialogsTypeProps) => {
+const Dialogs = (props: DialogPropsType) => {
 
 	const dialogsElements = props.dialogsPage.dialogs.map((d) => <DialogItem name={d.name} id={d.id} avatar={d.avatar}/>)
 	const messageElements = props.dialogsPage.messages.map((m) => <Message message={m.message}/>)
@@ -20,6 +14,7 @@ const Dialogs = (props: DialogsTypeProps) => {
 
 	const addMessageHandler = () => {
 		props.addMessage()
+		props.updateMessageTextArea('')
 	}
 
 	const onChangeMessageTextAreaHandler = () => {

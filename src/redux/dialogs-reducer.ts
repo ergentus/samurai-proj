@@ -1,6 +1,24 @@
-import {ActionTypes, DialogsPageType} from './store';
+import {ActionTypes} from './redux-store'
 
-const initialState = {
+
+export type DataDialogsType = {
+	id: number
+	name: string
+	avatar: string
+}
+
+type DataMessagestype = {
+	id: number
+	message: string
+}
+
+export type DialogsPageType = {
+	dialogs: DataDialogsType[],
+	messages: DataMessagestype[],
+	newMessageText: string,
+}
+
+const initialState: DialogsPageType = {
 	dialogs: [
 		{id: 1, name: 'Oleg', avatar: 'https://cs6.pikabu.ru/avatars/760/v760056-585817783.jpg'},
 		{id: 2, name: 'Victor', avatar: 'https://cs6.pikabu.ru/avatars/1227/v1227155-231214202.jpg'},
@@ -15,16 +33,15 @@ const initialState = {
 	newMessageText: 'some text',
 }
 
-const dialogsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
+const dialogsReducer = (state = initialState, action: ActionTypes): DialogsPageType => {
 	switch (action.type) {
 		case 'ADD-MESSAGE':
-			// state.messages.push({id: 2, message: state.newMessageText,})
-			// state.newMessageText = ''
-			const newMessage = {id: 3 , message: state.newMessageText}
+			const newMessage = {id: 3, message: state.newMessageText}
 			return {...state, messages: [...state.messages, newMessage]}
+
 		case 'UPDATE-MESSAGE-TEXT-AREA':
-			// state.newMessageText = action.dialogMessage
 			return {...state, newMessageText: action.dialogMessage}
+
 		default:
 			return state
 	}

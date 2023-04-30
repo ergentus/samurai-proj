@@ -1,53 +1,45 @@
-import {addPostActionCreator, UpdatePostTextAreaActionCreator} from './profile-reducer'
-import {addMessageActionCreator, updateMessageTextAreaActionCreator} from './dialogs-reducer'
+// export  type DataDialogsType = {
+// 	id: number
+// 	name: string
+// 	avatar: string
+// }
+//
+// type DataMessagestype = {
+// 	id: number
+// 	message: string
+// }
+//
+// export type DataPostType = {
+// 	id: number
+// 	message: string
+// 	likesCount: number
+// }
+//
+// export type ProfilePageType = {
+// 	posts: DataPostType[]
+// 	newPostText: string
+// }
+//
+// export type DialogsPageType = {
+// 	dialogs: DataDialogsType[],
+// 	messages: DataMessagestype[],
+// 	newMessageText: string,
+// }
+//
+// export type RootPagesType = {
+// 	profilePage: ProfilePageType
+// 	dialogsPage: DialogsPageType
+// 	// sidebarBlock: any
+// }
+//
+// export type StoreType = {
+// 	_state: RootPagesType
+// 	_callSubscriber: (state: RootPagesType) => void
+// 	getState: () => RootPagesType
+// 	subscribe: (callback: () => void) => void
+// 	dispatch: (action: ActionTypes) => void
+// }
 
-export  type DataDialogsType = {
-	id: number
-	name: string
-	avatar: string
-}
-
-type DataMessagestype = {
-	id: number
-	message: string
-}
-
-export type DataPostType = {
-	id: number
-	message: string
-	likesCount: number
-}
-
-export type ProfilePageType = {
-	posts: DataPostType[]
-	newPostText: string
-}
-
-export type DialogsPageType = {
-	dialogs: DataDialogsType[],
-	messages: DataMessagestype[],
-	newMessageText: string,
-}
-
-export type RootPagesType = {
-	profilePage: ProfilePageType
-	dialogsPage: DialogsPageType
-	// sidebarBlock: any
-}
-
-export type StoreType = {
-	_state: RootPagesType
-	_callSubscriber: (state: RootPagesType) => void
-	getState: () => RootPagesType
-	subscribe: (callback: () => void) => void
-	dispatch: (action: ActionTypes) => void
-}
-
-export type ActionTypes =
-	ReturnType<typeof addPostActionCreator>
-	| ReturnType<typeof UpdatePostTextAreaActionCreator>
-	| ReturnType<typeof addMessageActionCreator>
-	| ReturnType<typeof updateMessageTextAreaActionCreator>
 
 // const store: StoreType = {
 // 	_state: {
@@ -92,3 +84,6 @@ export type ActionTypes =
 
 
 // window.store = store
+
+
+export type RandomType = any

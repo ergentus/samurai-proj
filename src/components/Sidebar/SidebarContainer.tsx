@@ -1,12 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {RootPagesType} from '../../redux/store'
 import Sidebar from './Sidebar'
+import {DataDialogsType} from '../../redux/dialogs-reducer'
+import {AppStateType} from '../../redux/redux-store'
 
+type mapStateToProps = {
+	dialogs: DataDialogsType[]
+}
 
-const mapStateToProps = (state: RootPagesType) => {
+export type SidebarPropsType = mapStateToProps
+
+const mapStateToProps = (state: AppStateType): mapStateToProps => {
 	return {
-      dialogs: state.dialogsPage.dialogs,
+		dialogs: state.dialogsPage.dialogs
 	}
 }
 
