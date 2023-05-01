@@ -7,14 +7,13 @@ import {DialogPropsType} from './DialogsContainer'
 
 const Dialogs = (props: DialogPropsType) => {
 
-	const dialogsElements = props.dialogsPage.dialogs.map((d) => <DialogItem name={d.name} id={d.id} avatar={d.avatar}/>)
-	const messageElements = props.dialogsPage.messages.map((m) => <Message message={m.message}/>)
+	const dialogsElements = props.dialogsPage.dialogs.map((d) => <DialogItem key={d.id} id={d.id} name={d.name} avatar={d.avatar}/>)
+	const messageElements = props.dialogsPage.messages.map((m) => <Message key={m.id} message={m.message}/>)
 
 	let areaField = createRef<HTMLTextAreaElement>()
 
 	const addMessageHandler = () => {
 		props.addMessage()
-		props.updateMessageTextArea('')
 	}
 
 	const onChangeMessageTextAreaHandler = () => {

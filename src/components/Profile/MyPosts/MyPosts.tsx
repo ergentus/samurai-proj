@@ -6,12 +6,10 @@ import {MyPostsPropsType} from './MyPostsContainer'
 
 const MyPosts = (props: MyPostsPropsType): JSX.Element => {
 	const postsElements = props.profilePage.posts.map((p) => <Post message={p.message} likesCount={p.likesCount}/>)
-
-	let newPostElement = createRef<HTMLTextAreaElement>()
+	const newPostElement = createRef<HTMLTextAreaElement>()
 
 	const addPostHandler = () => {
 		props.addPost()
-		props.updatePostTextArea('')
 	}
 
 	const onChangeTextAreaHandler = () => {

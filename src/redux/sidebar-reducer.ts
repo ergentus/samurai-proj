@@ -16,8 +16,6 @@ const initialState: DialogsPageType = {
 	newMessageText: 'some text',
 }
 
-const sidebarReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
+export const sidebarReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
 	return state
 }
-
-export default sidebarReducer

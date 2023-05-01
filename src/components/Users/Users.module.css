@@ -1,0 +1,7 @@
+.userPhoto img {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: 2px solid rgb(156, 80, 80);
+	margin-right: 10px;
+}
