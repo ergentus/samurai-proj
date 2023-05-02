@@ -1,65 +1,45 @@
 import React, {useEffect} from 'react'
 import {UsersPropsType} from './UsersContainer'
 import s from './Users.module.css'
+import axios from 'axios'
+import userPhoto from './../../assets/images/img1.png'
 
-const Users = (props: UsersPropsType) => {
+class Users extends React.Component<UsersPropsType> {
 
-	useEffect(() => {
-		props.setUsers([
-			{
-				id: '1',
-				photoURL: 'https://i.imgur.com/q2eCFBN.png',
-				followed: false,
-				fullName: 'Oleg',
-				status: 'i am a boss',
-				location: {country: 'Russia', city: 'Moscow'},
-			},
-			{
-				id: '2',
-				photoURL: 'https://i.imgur.com/q2eCFBN.png',
-				followed: true,
-				fullName: 'Victor',
-				status: 'i am a boss too',
-				location: {country: 'Belaruss', city: 'Minsk'},
-			},
-			{
-				id: '3',
-				photoURL: 'https://i.imgur.com/q2eCFBN.png',
-				followed: false,
-				fullName: 'Egor',
-				status: 'i am not a boss',
-				location: {country: 'Russia', city: 'Ekaterinburg'},
-			},
-		])
-	}, [])
+	componentDidMount() {
+		axios.get('https://social-network.samuraijs.com/api/1.0/users')
+			.then(response => this.props.setUsers(response.data.items))
+	}
 
-	return (
-		<div>
-			{props.users.map(u =>
-				<div key={u.id}>
-					<div>
-						<div className={s.userPhoto}>
-							<img src={u.photoURL} alt="avatar"/>
+	render() {
+		return (
+			<div>
+				{this.props.users.map(u =>
+					<div key={u.id}>
+						<div>
+							<div className={s.userPhoto}>
+								<img src={u.photos.small || userPhoto} alt="avatar"/>
+							</div>
+							<div>
+								{u.followed
+									? <button onClick={() => this.props.unfollow(u.id)}>Unfollow</button>
+									: <button onClick={() => this.props.follow(u.id)}>Follow</button>}
+							</div>
 						</div>
 						<div>
-							{u.followed
-								? <button onClick={() => props.unfollow(u.id)}>Unfollow</button>
-								: <button onClick={() => props.follow(u.id)}>Follow</button>}
-						</div>
-					</div>
-					<div>
 						<span>
-							<div>{u.fullName}</div>
+							<div>{u.name}</div>
 							<div>{u.status}</div>
 						</span>
-						<span>
-						<span>{u.location.country}, </span><span>{u.location.city}</span>
+							<span>
+						<span>{'Russia'}, </span><span>{'Moskow'}</span>
 						</span>
-					</div>
-				</div>)
-			}
-		</div>
-	)
+						</div>
+					</div>)
+				}
+			</div>
+		)
+	}
 }
 
 export default Users

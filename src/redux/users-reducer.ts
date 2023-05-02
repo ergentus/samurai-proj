@@ -1,12 +1,15 @@
 import {ActionTypes} from './redux-store'
 
 export type User = {
-	id: string,
-	photoURL: string
-	followed: boolean,
-	fullName: string,
-	status: string,
-	location: {country: string, city: string}
+	"name": string
+	"id": number,
+	"uniqueUrlName": null,
+	"photos": {
+		"small": string ,
+		"large": string
+	},
+	"status": string,
+	"followed": boolean
 }
 
 export type UsersPageType = {
@@ -32,8 +35,8 @@ export const usersReducer = (state = initialState, action: ActionTypes) => {
 	}
 }
 
-export const followAC = (userId: string) => ({type: 'FOLLOW', userId} as const)
-export const unfollowAC = (userId: string) => ({type: 'UNFOLLOW', userId} as const)
+export const followAC = (userId: number) => ({type: 'FOLLOW', userId} as const)
+export const unfollowAC = (userId: number) => ({type: 'UNFOLLOW', userId} as const)
 export const setUsersAC = (users: User[]) => ({type: 'SET-USERS', users} as const)
 
 
