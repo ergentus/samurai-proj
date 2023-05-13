@@ -20,11 +20,11 @@ const initialState: ProfilePageType = {
 
 export const profileReducer = (state = initialState, action: ActionTypes) => {
 	switch (action.type) {
-		case 'ADD-POST':
+		case 'ADD_POST':
 			const newPost = {id: 2, message: state.newPostText, likesCount: 15}
 			return {...state, posts: [...state.posts, newPost], newPostText: ''}
 
-		case 'UPDATE-POST-TEXT-AREA':
+		case 'UPDATE_POST_TEXT_AREA':
 			return {...state, newPostText: action.postMessage}
 
 		default:
@@ -33,11 +33,11 @@ export const profileReducer = (state = initialState, action: ActionTypes) => {
 	}
 }
 
-export const addPostAC = () => ({type: 'ADD-POST'} as const)
+export const addPostAC = () => ({type: 'ADD_POST'} as const)
 
 export const updatePostTextAreaAC = (newText: string) => {
 	return {
-		type: 'UPDATE-POST-TEXT-AREA',
+		type: 'UPDATE_POST_TEXT_AREA',
 		postMessage: newText,
 	} as const
 }

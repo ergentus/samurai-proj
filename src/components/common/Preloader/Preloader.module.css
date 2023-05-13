@@ -1,0 +1,24 @@
+@keyframes spin {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+	50% {
+		transform: rotate(180deg) scale(1.2);
+	}
+	100% {
+		transform: rotate(360deg) scale(1);
+	}
+}
+
+.preloader {
+	width: 130px;
+	height: 130px;
+	display: inline-block;
+	animation: spin 1400ms linear infinite;
+}
+
+img {
+	display: block;
+	width: 100%;
+	height: auto;
+}

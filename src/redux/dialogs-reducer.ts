@@ -35,11 +35,11 @@ const initialState: DialogsPageType = {
 
 export const dialogsReducer = (state = initialState, action: ActionTypes): DialogsPageType => {
 	switch (action.type) {
-		case 'ADD-MESSAGE':
+		case 'ADD_MESSAGE':
 			const newMessage = {id: 3, message: state.newMessageText}
 			return {...state, messages: [...state.messages, newMessage], newMessageText: ''}
 
-		case 'UPDATE-MESSAGE-TEXT-AREA':
+		case 'UPDATE_MESSAGE_TEXT_AREA':
 			return {...state, newMessageText: action.dialogMessage}
 
 		default:
@@ -47,11 +47,11 @@ export const dialogsReducer = (state = initialState, action: ActionTypes): Dialo
 	}
 }
 
-export const addMessageAC = () => ({type: 'ADD-MESSAGE'} as const)
+export const addMessageAC = () => ({type: 'ADD_MESSAGE'} as const)
 
 export const updateMessageTextAreaAC = (newtext: string) => {
 	return {
-		type: 'UPDATE-MESSAGE-TEXT-AREA',
+		type: 'UPDATE_MESSAGE_TEXT_AREA',
 		dialogMessage: newtext,
 	} as const
 }
