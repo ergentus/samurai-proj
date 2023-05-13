@@ -5,3 +5,11 @@
 	border: 2px solid rgb(156, 80, 80);
 	margin-right: 10px;
 }
+
+.defaultPage {
+	cursor: pointer;
+}
+
+.selectedPage {
+	font-weight: bold;
+}
