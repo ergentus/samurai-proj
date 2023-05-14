@@ -3,7 +3,6 @@ import {addMessageAC, DialogsPageType, updateMessageTextAreaAC} from '../../redu
 import Dialogs from './Dialogs'
 import {connect} from 'react-redux'
 import {AppStateType} from '../../redux/redux-store'
-import {Dispatch} from 'redux'
 
 type mapStateToPropsType = {
 	dialogsPage: DialogsPageType
@@ -21,13 +20,10 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 		dialogsPage: state.dialogsPage,
 	}
 }
-const mapDispatchToProps = (dispatch: Dispatch) : mapDispatchToPropsType => {
-	return {
-		addMessage: () => dispatch(addMessageAC()),
-		updateMessageTextArea: (text: string) => dispatch(updateMessageTextAreaAC(text)),
-	}
-}
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+const DialogsContainer = connect(mapStateToProps, {
+	addMessage: addMessageAC,
+	updateMessageTextArea: updateMessageTextAreaAC,
+})(Dialogs)
 
 export default DialogsContainer

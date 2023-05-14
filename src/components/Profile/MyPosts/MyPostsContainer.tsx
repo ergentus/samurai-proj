@@ -3,7 +3,6 @@ import {addPostAC, ProfilePageType, updatePostTextAreaAC} from '../../../redux/p
 import MyPosts from './MyPosts'
 import {connect} from 'react-redux'
 import {AppStateType} from '../../../redux/redux-store'
-import {Dispatch} from 'redux'
 
 type mapStateToPropsType = {
 	profilePage: ProfilePageType
@@ -18,17 +17,11 @@ export type MyPostsPropsType = mapStateToPropsType & mapDispatchToPropsType
 
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 	return {
-		profilePage: state.profilePage
+		profilePage: state.profilePage,
 	}
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
-	return {
-		addPost: () => dispatch(addPostAC()),
-		updatePostTextArea: (text: string) => dispatch(updatePostTextAreaAC(text)),
-	}
-}
-
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
-
-export default MyPostsContainer
+export default connect(mapStateToProps, {
+	addPost: addPostAC,
+	updatePostTextArea: updatePostTextAreaAC,
+})(MyPosts)
