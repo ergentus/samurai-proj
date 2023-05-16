@@ -3,9 +3,9 @@
 	grid-template-columns: 2fr 10fr;
 }
 
-.dialogItems {
+.dialogItems,
+.messageItems {
 	margin: 20px;
-
 }
 
 .dialog {
@@ -27,6 +27,7 @@
 	text-decoration: none;
 	position: absolute;
 	top: 25px;
+	left: 100px;
 }
 
 .item a.activeLink,
@@ -46,10 +47,6 @@
 /* .dialog .active{
    color: red
 }  */
-
-.messageItems {
-	padding: 20px;
-}
 
 .sendMessageBlock {
 	display: flex;

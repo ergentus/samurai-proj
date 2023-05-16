@@ -1,7 +1,8 @@
 import React from 'react'
 import s from './Users.module.css'
-import defaultUserPhoto from '../../assets/images/defaultUserPhoto.png'
+import defaultUserPhoto from '../../assets/images/defaultPhoto.png'
 import {User} from '../../redux/users-reducer'
+import {NavLink} from 'react-router-dom'
 
 type UsersPropsType = {
 	totalUsersCount: number
@@ -31,7 +32,7 @@ const Users = (props: UsersPropsType) => {
 		<div>
 			<div>
 				{carouselPages.map((p) => {
-					return <span
+					return <span key={p}
 						className={chosenPage === p ? s.selectedPage : s.defaultPage}
 						onClick={() => props.onPageChanged(p)}
 					>{p} </span>
@@ -40,8 +41,10 @@ const Users = (props: UsersPropsType) => {
 			{props.users.map(u =>
 				<div key={u.id}>
 					<div>
-						<div className={s.userPhoto}>
-							<img src={u.photos.small || defaultUserPhoto} alt="avatar"/>
+						<div>
+							<NavLink to={`/profile/${u.id}`}>
+								<img className={s.userPhoto} src={u.photos.small ? u.photos.small : defaultUserPhoto} alt="avatar"/>
+							</NavLink>
 						</div>
 						<div>
 							{u.followed

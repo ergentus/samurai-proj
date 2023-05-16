@@ -1,15 +1,15 @@
 import {ActionTypes} from './redux-store'
 
 export type User = {
-	'name': string
-	'id': number
-	'uniqueUrlName': null
-	'photos': {
-		'small': string
-		'large': string
+	name: string
+	id: number
+	uniqueUrlName: null
+	photos: {
+		small: string
+		large: string
 	},
-	'status': string
-	'followed': boolean
+	status: string
+	followed: boolean
 }
 
 export type UsersPageType = {

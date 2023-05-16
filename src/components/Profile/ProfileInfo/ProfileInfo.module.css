@@ -6,6 +6,32 @@
    max-height: 340px;
 }
 
+.userPhoto {
+   display: inline-block;
+   width: 70px;
+   height: 70px;
+   border-radius: 50%;
+   border: 2px solid rgb(156, 80, 80);
+   margin-right: 10px;
+}
+
 .descriptionBlock {
+   display: flex;
+   justify-content: space-between;
+   min-height: 150px;
    padding: 10px;
+}
+
+.nameAboutBlock {
+   display: flex;
+   margin-bottom: 20px;
+}
+
+.nameAboutBlock h3 {
+   font-size: 28px;
+   margin: 16px 0 0 0;
+}
+
+.nameAboutBlock div {
+   font-size: 16px;
 }
