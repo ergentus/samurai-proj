@@ -3,6 +3,7 @@ import {addPostAC, profileReducer, setUserProfileAC, updatePostTextAreaAC} from 
 import {addMessageAC, dialogsReducer, updateMessageTextAreaAC} from './dialogs-reducer'
 import {sidebarReducer} from './sidebar-reducer'
 import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC, usersReducer} from './users-reducer'
+import {authReducer, setAuthUserDataAC} from './auth-reducer'
 
 
 export type ActionTypes =
@@ -17,6 +18,7 @@ export type ActionTypes =
 	| ReturnType<typeof setTotalUsersCountAC>
 	| ReturnType<typeof toggleIsFetchingAC>
 	| ReturnType<typeof setUserProfileAC>
+	| ReturnType<typeof setAuthUserDataAC>
 
 export type AppStateType = ReturnType<typeof rootReducer>
 
@@ -25,6 +27,7 @@ export const rootReducer = combineReducers({
 	dialogsPage: dialogsReducer,
 	usersPage: usersReducer,
 	sidebar: sidebarReducer,
+	auth: authReducer,
 })
 
 export const store = createStore(rootReducer)

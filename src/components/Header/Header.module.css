@@ -1,4 +1,6 @@
 .header {
+   display: flex;
+   justify-content: space-between;
    grid-area: h;
    background-color: rgb(104, 202, 169);
    border-radius: 0 0 20px 20px;
@@ -9,4 +11,15 @@
    border-radius: 0 0 20px 0;
    border-right: 5px solid rgb(73, 121, 105);
    border-bottom: 2px solid rgb(73, 121, 105);
-} 
+}
+
+.loginBlock {
+   align-self: center;
+}
+
+.loginBlock a{
+   margin-right: 20px;
+   color: black;
+   font-size: 24px;
+   text-decoration: none;
+}

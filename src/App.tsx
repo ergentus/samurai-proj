@@ -1,7 +1,6 @@
 import React from 'react'
 import './App.css'
 import {Route} from 'react-router-dom'
-import Header from './components/Header/Header'
 import News from './components/News/News'
 import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
@@ -10,12 +9,13 @@ import SidebarContainer from './components/Sidebar/SidebarContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
 import withUrlDataContainerComponent from './components/Profile/ProfileContainer'
+import HeaderContainer from './components/Header/HeaderContainer'
 
 
 const App = () => {
    return (
       <div className='add-wrapper'>
-         <Header/>
+         <HeaderContainer/>
          <SidebarContainer />
          <div className='app-wrapper-content'>
             <Route path='/profile/:userId?' component={withUrlDataContainerComponent}/>
