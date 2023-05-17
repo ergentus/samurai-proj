@@ -3,6 +3,7 @@ import s from './Users.module.css'
 import defaultUserPhoto from '../../assets/images/defaultPhoto.png'
 import {User} from '../../redux/users-reducer'
 import {NavLink} from 'react-router-dom'
+import axios from 'axios'
 
 type UsersPropsType = {
 	totalUsersCount: number
@@ -28,13 +29,37 @@ const Users = (props: UsersPropsType) => {
 		? carouselPages = pages.slice(0, 5)
 		: carouselPages = pages.slice(chosenPage - 3, chosenPage + 2)
 
+	const unfollowFc = (id: number) => {
+		axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
+			withCredentials: true,
+			headers: {'API-KEY': 'd76d38ca-205c-4c62-971a-fbc3417a68fc'},
+		})
+			.then(response => {
+				if (response.data.resultCode === 0) {
+					props.unfollow(id)
+				}
+			})
+	}
+	const followFc = (id: number) => {
+		axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
+			withCredentials: true,
+			headers: {'API-KEY': 'd76d38ca-205c-4c62-971a-fbc3417a68fc'},
+		})
+			.then(response => {
+				if (response.data.resultCode === 0) {
+					props.follow(id)
+				}
+			})
+	}
+
+
 	return (
 		<div>
 			<div>
 				{carouselPages.map((p) => {
 					return <span key={p}
-						className={chosenPage === p ? s.selectedPage : s.defaultPage}
-						onClick={() => props.onPageChanged(p)}
+									 className={chosenPage === p ? s.selectedPage : s.defaultPage}
+									 onClick={() => props.onPageChanged(p)}
 					>{p} </span>
 				})}
 			</div>
@@ -48,8 +73,8 @@ const Users = (props: UsersPropsType) => {
 						</div>
 						<div>
 							{u.followed
-								? <button onClick={() => props.unfollow(u.id)}>Unfollow</button>
-								: <button onClick={() => props.follow(u.id)}>Follow</button>}
+								? <button onClick={() => unfollowFc(u.id)}>Unfollow</button>
+								: <button onClick={() => followFc(u.id)}>Follow</button>}
 						</div>
 					</div>
 					<div>
